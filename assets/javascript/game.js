@@ -19,10 +19,12 @@ $( document ).ready(function() {
 
 function setUpGame (){
     //store answerVal
+    counter === 0;
     var winningNum = Math.floor(Math.random() * 102 + 19);
     console.log("winning number= " + winningNum);
-    answerVal += winningNum;
+    answerVal = winningNum;
     console.log(answerVal);
+    $(".answerVal").html("This is the number you want: " + answerVal);
 }
 
 function assignJewelValue() {
@@ -38,81 +40,95 @@ function assignJewelValue() {
 
 //FUNCTIONS
 
+
 //when user clicks on a gem, store this value and add this value to userGuess (if, else)
         function addRubyClickHandler() {
             $(".ruby").on("click", function() {
-            console.log("You Clicked Me!");
-            onRubyClick(phase, allTheJewels.ruby);
+                counter = counter + allTheJewels.ruby;
+                console.log("You Clicked Me!");
+                console.log(counter);
+                $(".counter").html("Your current score: " + counter);
+                if (counter === answerVal) {
+                    youWin();
+                    console.log("You WIN!")}
+                    else if (counter > answerVal) {
+                        youLost();
+                        console.log("YOU LOSE :(");
+                    };
+                
+            // onRubyClick(phase, allTheJewels.ruby);
             });
-        };
-
-        function onRubyClick(phs, valU) {
-            if (phs) {
-            counter += valU;
-            console.log("Your Score: " + counter);
-            }
-            else {
-            secondNumber += valU;
-            console.log("secondNumber: " + secondNumber);
-            };
         };
 
         function addJadeClickHandler() {
             $(".jade").on("click", function() {
-            console.log("You Clicked Me!");
-            onJadeClick(phase, allTheJewels.jade);
+                counter = counter + allTheJewels.jade;
+                console.log("You clicked Me!");
+                console.log(counter);
+                $(".counter").html("Your current score: " + counter);
+                if (counter === answerVal) {
+                    youWin();
+                    console.log("You WIN!")}
+                    else if (counter > answerVal) {
+                        youLost();
+                        console.log("YOU LOSE :(");
+                    };
             });
-        };
-
-        function onJadeClick(phs, valU) {
-            if (phs) {
-            counter += valU;
-            console.log("Your Score: " + counter);
-            }
-            else {
-            secondNumber += valU;
-            console.log("secondNumber: " + secondNumber);
-            };
         };
 
         function addGarnetClickHandler() {
-            $(".garnet").on("click", function() {
-            console.log("You Clicked Me!");
-            onGarnetClick(phase, allTheJewels.garnet);
+            $(".garnet").on("click", function(){
+                counter = counter + allTheJewels.garnet;
+                console.log("You Clicked me!");
+                console.log(counter);
+                $(".counter").html("Your current score: " + counter);
+                if (counter === answerVal) {
+                    youWin();
+                    console.log("You WIN!")}
+                    else if (counter > answerVal) {
+                        youLost();
+                        console.log("YOU LOSE :(");
+                    };
             });
-        };
-
-        function onGarnetClick(phs, valU) {
-            if (phs) {
-            counter += valU;
-            console.log("Your Score: " + counter);
-            }
-            else {
-            secondNumber += valU;
-            console.log("secondNumber: " + secondNumber);
-            };
         };
 
         function addSapphireClickHandler() {
-            $(".sapphire").on("click", function() {
-            console.log("You Clicked Me!");
-            onSapphireClick(phase, allTheJewels.sapphire);
-            });
+            $(".sapphire").on("click", function(){
+                counter = counter + allTheJewels.sapphire;
+                console.log ("You clicked me!");
+                console.log(counter);
+                $(".counter").html("Your current score: " + counter);
+                if (counter === answerVal) {
+                    youWin();
+                    console.log("You WIN!")}
+                    else if (counter > answerVal) {
+                        youLost();
+                        console.log("YOU LOSE :(");
+                    };
+            }); 
+        };
+        
+        function youWin() {
+            setUpGame();
+            assignJewelValue();
+            counter = 0;
+            wins++;
+            console.log(counter);
+            $(".wins").html("Wins: " + wins);
+
+            //YOU WIN //RESET GAME
         };
 
-        function onSapphireClick(phs, valU) {
-            if (phs) {
-            counter += valU;
-            console.log("Your Score: " + counter);
-            }
-            else {
-            secondNumber += valU;
-            console.log("secondNumber: " + secondNumber);
-            };
+        function youLost() {
+            //YOU LOSE //RESET GAME
+            setUpGame();
+            assignJewelValue();
+            counter = 0;
+            losses++;
+            console.log(counter);
+            $(".losses").html("Losses: " + losses);
+
         };
-
-
-//
 
 // totalScore = additionArray.reduce(addArray)
 // //function to add all elements in array
