@@ -1,0 +1,11 @@
+body {
+    background-image: url("https://raw.githubusercontent.com/sdrosi/week-4-game/master/assets/images/pow-star.png");
+}
+
+#gamer {
+    margin-top: 20px;
+}
+
+.lead {
+    text-align: center;
+}
