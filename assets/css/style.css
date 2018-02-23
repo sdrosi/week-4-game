@@ -6,6 +6,10 @@ body {
     margin-top: 20px;
 }
 
+#back {
+    background-color: rgba(236, 243, 236, 0.3);
+}
+
 .lead {
     text-align: center;
 }
